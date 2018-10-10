@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 20">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #8c8c8c;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="我的线性ICONS" transform="translate(-0.5 -0.5)">
+    <ellipse id="XMLID_4_" class="cls-1" cx="4.5" cy="4.688" rx="4.5" ry="4.688" transform="translate(5.5 1)"/>
+    <path id="XMLID_2_" class="cls-2" d="M1,29.877A9.19,9.19,0,0,1,10,20.5a9.19,9.19,0,0,1,9,9.377Z" transform="translate(0 -9.877)"/>
+  </g>
+</svg>

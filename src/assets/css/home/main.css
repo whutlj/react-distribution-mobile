@@ -1,0 +1,11 @@
+.main-wrapper {
+  height: 100%;
+  background-color: #cccccc;
+  &__carousel {
+    padding: 15px 14px;
+    .banner-box {
+      height: 140px;
+      background: red;
+    }
+  }
+}
