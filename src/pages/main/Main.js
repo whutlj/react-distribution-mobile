@@ -17,6 +17,7 @@ const HotSoure = Loadable({
   loader: () => import('./HotSource'),
   loading: LoadingComponent
 });
+
 class Main extends React.Component {
   constructor(props) {
     super(props);

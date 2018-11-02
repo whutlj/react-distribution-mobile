@@ -14,7 +14,7 @@ const store = createStore(
   rootReducers,
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
-
+console.log(process.env);
 ReactDOM.render(
   <Provider store={store}>
     <Router basename={router.basename}>

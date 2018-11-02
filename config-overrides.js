@@ -9,7 +9,17 @@ function resolve(dir) {
 }
 let baseUrl = '/xdnphb/';
 let proxyData = {};
-let urlList = ['common', 'ade', 'user', 'pay', 'aly', 'knowledgepay', 'account', 'login', 'flowPacket'];
+let urlList = [
+  'common',
+  'ade',
+  'user',
+  'pay',
+  'aly',
+  'knowledgepay',
+  'account',
+  'login',
+  'flowPacket'
+];
 for (let i = 0, len = urlList.length; i < len; i++) {
   let str = urlList[i];
   let proxyPath = baseUrl + str;
@@ -49,5 +59,6 @@ module.exports = (config, env) => {
     config
   );
   Object.assign(config.resolve.alias, { '@': resolve('src') });
+  console.log(config.plugins);
   return config;
 };

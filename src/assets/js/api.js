@@ -31,6 +31,11 @@ const loginUrl = rootUrl + 'login/new/';
 //     }
 //   }
 // };
+
+console.log('测试环境变量');
+console.log(process.env);
+console.log(process.env['npm_config_type']);
+
 const getUser = () => {
   const url = rootUrl + 'common/account/get';
   return request.get(url);
@@ -140,7 +145,10 @@ const getDistributionList = (param) => {
  * @param {currentDay, nextPage} 订单详情
  */
 const getDistributionIndentDetial = (param) => {
-  return requestNoCancel.get(`${phoneKnowUrl}getDistributionIndentDetial`, param);
+  return requestNoCancel.get(
+    `${phoneKnowUrl}getDistributionIndentDetial`,
+    param
+  );
 };
 
 /**
