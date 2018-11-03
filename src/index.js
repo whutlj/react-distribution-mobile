@@ -14,7 +14,11 @@ const store = createStore(
   rootReducers,
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
+console.log('环境变量');
 console.log(process.env);
+if (process.env.PROD_TEST) {
+  console.log('设置变量成功');
+}
 ReactDOM.render(
   <Provider store={store}>
     <Router basename={router.basename}>

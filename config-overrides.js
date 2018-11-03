@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { injectBabelPlugin } = require('react-app-rewired');
 const rewireStyledComponents = require('react-app-rewire-styled-components');
 /**
@@ -59,6 +60,28 @@ module.exports = (config, env) => {
     config
   );
   Object.assign(config.resolve.alias, { '@': resolve('src') });
-  console.log(config.plugins);
+  const protest = process.env['npm_config_protest'];
+  // config.plugins = [
+  //   ...config.plugins,
+  //   new webpack.EnvironmentPlugin({
+  //     PROD_TEST: !!protest
+  //   })
+  // ];
+  // config.plugins = [
+  //   ...config.plugins,
+  //   new webpack.DefinePlugin({
+  //     'process.env.PROD_TEST': JSON.stringify(!!protest)
+  //   })
+  // ];
+  config.plugins = (config.plugins || []).concat(
+    new webpack.DefinePlugin({
+      'process.env.PROD_TEST': JSON.stringify(!!protest)
+    })
+  );
+  // config.devtool =
+  //   process.env.NODE_ENV === 'production'
+  //     ? 'source-map'
+  //     : 'cheap-module-eval-source-map';
+  // console.log(config);
   return config;
 };

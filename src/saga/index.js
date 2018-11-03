@@ -1,0 +1,2 @@
+// generator
+export function* helloSaga() {}

@@ -4,13 +4,18 @@ import { vw } from '@/assets/js/utils';
 import styled from 'styled-components';
 import { Button } from 'antd-mobile';
 class Catalog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.testSaga = this.testSag.bind(this);
+  }
+
   render() {
     return (
       <div className="main">
         the is catalog
         <DemoComponent name="#f00"> i am demo component </DemoComponent>
         <div className="test" />
-        <MyButton>我的按钮</MyButton>
+        <MyButton onClick={this.testSaga}>我的按钮</MyButton>
       </div>
     );
   }

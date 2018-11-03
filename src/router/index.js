@@ -13,7 +13,7 @@ const Main = Loadable({
   loading: LoadingComponent
 });
 const Catalog = Loadable({
-  loader: () => import('@/components/home/Catalog'),
+  loader: () => import('@/pages/catalog/index'),
   loading: LoadingComponent
 });
 const NotFound = Loadable({

@@ -32,10 +32,6 @@ const loginUrl = rootUrl + 'login/new/';
 //   }
 // };
 
-console.log('测试环境变量');
-console.log(process.env);
-console.log(process.env['npm_config_type']);
-
 const getUser = () => {
   const url = rootUrl + 'common/account/get';
   return request.get(url);
