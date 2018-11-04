@@ -7,11 +7,13 @@ import PropTypes from 'prop-types';
 import { loadingOpen, loadingClose } from '@/assets/js/utils';
 import styled from 'styled-components';
 import { vw } from '@/assets/js/utils';
+import { connect } from 'react-redux';
 // import '@/assets/css/home/main.css';
 import cx from './img/cx_m.svg';
 import kc from './img/kc_m.svg';
 import xs from './img/xs_m.svg';
 import mh from './img/mh_m.svg';
+import { getUserInfo } from '@/actions/user'
 
 const HotSoure = Loadable({
   loader: () => import('./HotSource'),
@@ -33,7 +35,12 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    this.initData();
+    // this.initData();
+    const { dispatch } = this.props;
+    setTimeout(() => {
+      console.log('获取用户信息');
+      dispatch(getUserInfo());
+    }, 3000)
   }
 
   initData() {
@@ -176,4 +183,4 @@ const ListWrapper = styled.div`
   margin-top: ${vw('50px')};
 `;
 
-export default Main;
+export default connect()(Main);

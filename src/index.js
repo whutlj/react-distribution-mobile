@@ -5,17 +5,24 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import router from '@/router';
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+// import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import rootReducers from '@/reducers/routeStore';
+import createSagaMiddleware from 'redux-saga';
+import user from '@/saga/user';
+
 import { createLogger } from 'redux-logger';
 const loggerMiddleware = createLogger();
+// const store = createStore(
+//   rootReducers,
+//   applyMiddleware(thunkMiddleware, loggerMiddleware)
+// );
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducers,
-  applyMiddleware(thunkMiddleware, loggerMiddleware)
+  applyMiddleware(sagaMiddleware, loggerMiddleware)
 );
-console.log('环境变量');
-console.log(process.env);
+sagaMiddleware.run(user);
 if (process.env.PROD_TEST) {
   console.log('设置变量成功');
 }
