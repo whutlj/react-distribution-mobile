@@ -13,7 +13,7 @@ import cx from './img/cx_m.svg';
 import kc from './img/kc_m.svg';
 import xs from './img/xs_m.svg';
 import mh from './img/mh_m.svg';
-import { getUserInfo } from '@/actions/user'
+import { getUserInfo,setUserStatus } from '@/actions/user'
 
 const HotSoure = Loadable({
   loader: () => import('./HotSource'),
@@ -41,6 +41,10 @@ class Main extends React.Component {
       console.log('获取用户信息');
       dispatch(getUserInfo());
     }, 3000)
+    setTimeout(() => {
+      console.log('获取用户状态');
+      dispatch(setUserStatus());
+    }, 6000)
   }
 
   initData() {

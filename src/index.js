@@ -4,13 +4,12 @@ import '@/assets/css/base.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import router from '@/router';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 // import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import rootReducers from '@/reducers/routeStore';
+import * as reducers from '@/reducers';
 import createSagaMiddleware from 'redux-saga';
 import user from '@/saga/user';
-
 import { createLogger } from 'redux-logger';
 const loggerMiddleware = createLogger();
 // const store = createStore(
@@ -19,7 +18,7 @@ const loggerMiddleware = createLogger();
 // );
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  rootReducers,
+  combineReducers({...reducers}),
   applyMiddleware(sagaMiddleware, loggerMiddleware)
 );
 sagaMiddleware.run(user);
