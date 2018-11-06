@@ -11,6 +11,8 @@ import * as reducers from '@/reducers';
 import createSagaMiddleware from 'redux-saga';
 import user from '@/saga/user';
 import { createLogger } from 'redux-logger';
+// 引入mock
+import './mock';
 const loggerMiddleware = createLogger();
 // const store = createStore(
 //   rootReducers,
@@ -18,13 +20,10 @@ const loggerMiddleware = createLogger();
 // );
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
-  combineReducers({...reducers}),
+  combineReducers({ ...reducers }),
   applyMiddleware(sagaMiddleware, loggerMiddleware)
 );
 sagaMiddleware.run(user);
-if (process.env.PROD_TEST) {
-  console.log('设置变量成功');
-}
 ReactDOM.render(
   <Provider store={store}>
     <Router basename={router.basename}>

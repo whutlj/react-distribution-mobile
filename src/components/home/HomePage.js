@@ -41,7 +41,6 @@ class HomePage extends React.Component {
   componentWillMount() {
     // 根据当前路由判断route值
     const { location, dispatch } = this.props;
-    console.log(location);
     let res = '';
     switch (location.pathname) {
       case '/home':
@@ -61,7 +60,6 @@ class HomePage extends React.Component {
 
   render() {
     const { match } = this.props;
-    console.log(this.state);
     return (
       <div className="home-wrapper">
         <Switch>

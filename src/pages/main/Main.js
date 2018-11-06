@@ -1,5 +1,5 @@
 import React from 'react';
-import { getBannerList, getHotSource } from '@/assets/js/api';
+import { getBannerList, getHotSource } from '@/assets/js/mockApi';
 import { Carousel, Toast } from 'antd-mobile';
 import Loadable from 'react-loadable';
 import LoadingComponent from '@/components/common/LoadingComponent';
@@ -13,8 +13,7 @@ import cx from './img/cx_m.svg';
 import kc from './img/kc_m.svg';
 import xs from './img/xs_m.svg';
 import mh from './img/mh_m.svg';
-import { getUserInfo,setUserStatus } from '@/actions/user'
-
+import { getUserInfo, setUserStatus } from '@/actions/user';
 const HotSoure = Loadable({
   loader: () => import('./HotSource'),
   loading: LoadingComponent
@@ -35,16 +34,16 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    // this.initData();
+    this.initData();
     const { dispatch } = this.props;
-    setTimeout(() => {
-      console.log('获取用户信息');
-      dispatch(getUserInfo());
-    }, 3000)
-    setTimeout(() => {
-      console.log('获取用户状态');
-      dispatch(setUserStatus());
-    }, 6000)
+    // setTimeout(() => {
+    //   console.log('获取用户信息');
+    dispatch(getUserInfo());
+    // }, 3000);
+    // setTimeout(() => {
+    //   console.log('获取用户状态');
+    //   dispatch(setUserStatus());
+    // }, 6000);
   }
 
   initData() {

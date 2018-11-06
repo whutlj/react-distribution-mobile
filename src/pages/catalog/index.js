@@ -3,10 +3,30 @@ import '@/assets/css/home/main.css';
 import { vw } from '@/assets/js/utils';
 import styled from 'styled-components';
 import { Button } from 'antd-mobile';
+import { connect } from 'react-redux';
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: false
+    };
     this.testSaga = this.testSag.bind(this);
+  }
+
+  testSag() {
+    console.log('testSaga');
+    const { dispatch } = this.props;
+    // dispatch({ type: 'take_task' });
+    if (this.state.status) {
+      dispatch({ type: 'LOGOUT' });
+    } else {
+      dispatch({ type: 'LOGIN' });
+    }
+    this.setState((preSate) => {
+      return {
+        status: !preSate.status
+      };
+    });
   }
 
   render() {
@@ -21,7 +41,7 @@ class Catalog extends React.Component {
   }
 }
 
-export default Catalog;
+export default connect()(Catalog);
 
 const DemoComponent = styled.div`
   background-color: #44014c;

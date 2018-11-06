@@ -52,6 +52,7 @@
     "autoprefixer": "^9.1.5",
     "babel-plugin-import": "^1.8.0",
     "babel-plugin-styled-components": "^1.8.0",
+    "mockjs": "^1.0.1-beta3",
     "postcss": "^7.0.5",
     "postcss-preset-env": "^6.0.10",
     "postcss-px-to-viewport": "^0.0.3",

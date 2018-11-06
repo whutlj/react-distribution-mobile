@@ -1,6 +1,6 @@
-import { SET_USER_INFO, UPDATA_USER_STATUS } from '@/actions/user'
+import { SET_USER_INFO, UPDATA_USER_STATUS } from '@/actions/user';
 export function user(state = null, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SET_USER_INFO:
       return action.user;
     default:
@@ -9,7 +9,7 @@ export function user(state = null, action) {
 }
 
 export function status(state = false, action) {
-  switch(action.type) {
+  switch (action.type) {
     case UPDATA_USER_STATUS:
       return action.status;
     default:
