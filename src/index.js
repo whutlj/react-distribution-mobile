@@ -13,11 +13,14 @@ import user from '@/saga/user';
 import { createLogger } from 'redux-logger';
 // 引入mock
 import './mock';
+// 批量引入svg
+import './icons';
 const loggerMiddleware = createLogger();
 // const store = createStore(
 //   rootReducers,
 //   applyMiddleware(thunkMiddleware, loggerMiddleware)
 // );
+console.log(process.env);
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({ ...reducers }),
