@@ -4,6 +4,7 @@ import { vw } from '@/assets/js/utils';
 import styled from 'styled-components';
 import { Button } from 'antd-mobile';
 import { connect } from 'react-redux';
+import SvgIcon from '@/components/SvgIcon';
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,7 @@ class Catalog extends React.Component {
   render() {
     return (
       <div className="main">
+        <SvgIcon icon="lock" />
         the is catalog
         <DemoComponent name="#f00"> i am demo component </DemoComponent>
         <div className="test" />

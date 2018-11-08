@@ -63,7 +63,7 @@ class HomePage extends React.Component {
     return (
       <div className="home-wrapper">
         <Switch>
-          {router.routes[1].children.map((route, index) => {
+          {router.routes[2].children.map((route, index) => {
             return (
               <Route
                 path={`${match.path}${route.path}`.substr(1)}

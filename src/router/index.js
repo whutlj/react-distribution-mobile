@@ -8,6 +8,10 @@ const App = Loadable({
   loader: () => import('@/App'),
   loading: LoadingComponent
 });
+const Login = Loadable({
+  loader: () => import('@/pages/login'),
+  loading: LoadingComponent
+});
 const Main = Loadable({
   loader: () => import('@/pages/main/Main'),
   loading: LoadingComponent
@@ -35,6 +39,11 @@ const User = Loadable({
 const router = {
   basename: 'distribution',
   routes: [
+    {
+      path: '/login',
+      component: Login,
+      exact: true
+    },
     {
       path: '/app',
       component: App,

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '@/assets/css/base.css';
+// 批量引入svg
+import './icons/index';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import router from '@/router';
@@ -13,20 +15,18 @@ import user from '@/saga/user';
 import { createLogger } from 'redux-logger';
 // 引入mock
 import './mock';
-// 批量引入svg
-import './icons';
 const loggerMiddleware = createLogger();
 // const store = createStore(
 //   rootReducers,
 //   applyMiddleware(thunkMiddleware, loggerMiddleware)
 // );
-console.log(process.env);
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   combineReducers({ ...reducers }),
   applyMiddleware(sagaMiddleware, loggerMiddleware)
 );
 sagaMiddleware.run(user);
+console.log('212131231312');
 ReactDOM.render(
   <Provider store={store}>
     <Router basename={router.basename}>
