@@ -1,6 +1,6 @@
 const path = require('path');
 
-const getChildrenRules = loader =>
+const getChildrenRules = (loader) =>
   loader.use ||
   loader.oneOf ||
   (Array.isArray(loader.loader) && loader.loader) ||
@@ -16,7 +16,7 @@ const findIndexAndRules = (rulesSource, ruleMatcher) => {
       (result = ruleMatcher(rule)
         ? {
             index,
-            rules,
+            rules
           }
         : findIndexAndRules(getChildrenRules(rule), ruleMatcher))
   );
@@ -29,17 +29,18 @@ const addBeforeRule = (rulesSource, ruleMatcher, value) => {
   rules.splice(index, 0, value);
 };
 
-const fileLoaderRuleMatcher = rule =>
+const fileLoaderRuleMatcher = (rule) =>
   rule.loader &&
   rule.loader.indexOf(`${path.sep}file-loader${path.sep}`) !== -1;
 
 module.exports = function(config, env, options = {}) {
+  console.log(config.module.rules[1].oneOf);
   const opt = Object.assign(
     {},
     {
       include: path.resolve(__dirname, '../src/assets/svg'),
       exclude: [/node_modules/],
-      loaderOptions: {},
+      loaderOptions: { symbolId: 'icon-[name]' }
     },
     options
   );
@@ -50,12 +51,12 @@ module.exports = function(config, env, options = {}) {
     use: [
       {
         loader: require.resolve('svg-sprite-loader'),
-        options: opt.loaderOptions,
-      },
-      {
-        loader: require.resolve('svgo-loader'),
-      },
-    ],
+        options: opt.loaderOptions
+      }
+      // {
+      //   loader: require.resolve('svgo-loader'),
+      // },
+    ]
   };
 
   addBeforeRule(config.module.rules, fileLoaderRuleMatcher, svgSpriteLoader);

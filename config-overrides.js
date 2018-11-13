@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const { injectBabelPlugin } = require('react-app-rewired');
 const rewireStyledComponents = require('react-app-rewire-styled-components');
 const paths = require('react-scripts/config/paths');
+const rewireSvgLoader = require('./src/config/react-app-rewire-svg-sprite-loader');
 /**
  * 合成一个决定路径
  */
@@ -80,6 +81,7 @@ module.exports = (config, env) => {
   //     'process.env.PROD_TEST': JSON.stringify(!!protest)
   //   })
   // ];
+  config = rewireSvgLoader(config, env, { include: resolve('src/icons') });
   config.plugins = (config.plugins || []).concat(
     new webpack.DefinePlugin({
       'process.env.PROD_TEST': JSON.stringify(!!protest)
@@ -103,17 +105,18 @@ module.exports = (config, env) => {
   //     symbolId: 'icon-[name]'
   //   }
   // }
-  config.module.rules = [
-    ...config.module.rules,
-    {
-      test: /\.svg$/,
-      loader: 'svg-sprite-loader',
-      include: resolve('src/icons'),
-      options: {
-        symbolId: 'icon-[name]'
-      }
-    }
-  ];
+  // config.module.rules = [
+  //   ...config.module.rules,
+  //   {
+  //     test: /\.svg$/,
+  //     loader: 'svg-sprite-loader',
+  //     include: resolve('src/icons'),
+  //     options: {
+  //       symbolId: 'icon-[name]'
+  //     }
+  //   }
+  // ];
   console.log(config.module);
+  console.log(config.module.rules);
   return config;
 };
