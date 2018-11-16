@@ -26,7 +26,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware, loggerMiddleware)
 );
 sagaMiddleware.run(user);
-console.log('212131231312');
+console.log('index页面--------------');
 ReactDOM.render(
   <Provider store={store}>
     <Router basename={router.basename}>

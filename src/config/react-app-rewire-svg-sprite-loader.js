@@ -34,12 +34,11 @@ const fileLoaderRuleMatcher = (rule) =>
   rule.loader.indexOf(`${path.sep}file-loader${path.sep}`) !== -1;
 
 module.exports = function(config, env, options = {}) {
-  console.log(config.module.rules[1].oneOf);
   const opt = Object.assign(
     {},
     {
-      include: path.resolve(__dirname, '../src/assets/svg'),
-      exclude: [/node_modules/],
+      include: path.resolve(__dirname, '../src/icons/svg'),
+      // exclude: [/node_modules/],
       loaderOptions: { symbolId: 'icon-[name]' }
     },
     options
@@ -47,7 +46,7 @@ module.exports = function(config, env, options = {}) {
   const svgSpriteLoader = {
     test: /\.svg$/,
     include: opt.include,
-    exclude: opt.exclude,
+    // exclude: opt.exclude,
     use: [
       {
         loader: require.resolve('svg-sprite-loader'),
